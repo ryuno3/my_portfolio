@@ -1,6 +1,36 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --foreground-rgb: 28, 28, 28;
+  --background-start-rgb: 248, 247, 242;
+  --background-end-rgb: 239, 238, 228;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 239, 238, 228;
+    --background-start-rgb: 28, 28, 28;
+    --background-end-rgb: 28, 28, 28;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
+    rgb(var(--background-start-rgb));
+}
+
+/* Tailwindのレイヤー構文を修正 */
+.jp-heading {
+  @apply border-b-2 border-akane pb-2 mb-4 font-bold tracking-wider;
+}
+
+.washi-container {
+  @apply bg-washi-100 p-6 rounded-lg shadow-md;
+}
+
+.japanese-divider {
+  @apply h-px bg-gradient-to-r from-transparent via-kusagi to-transparent my-8;
 }
