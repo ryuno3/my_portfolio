@@ -2,8 +2,14 @@ import Headline from "@/components/ui/headline";
 import { sawarabiMincho } from "./layout";
 import Link from "next/link";
 import Image from "next/image";
+import { SkillsAction } from "@/utils/prisma/skillsAction";
 
-export default function Home() {
+export default async function Home() {
+  const skillsAction = new SkillsAction();
+
+  // 表示用に最大4つのスキルを選択
+  const displaySkills = await (await skillsAction.getAllSkills()).slice(0, 4);
+
   return (
     <div className="space-y-16">
       {/* ヒーローセクション */}
@@ -59,22 +65,12 @@ export default function Home() {
       <section className="washi-container">
         <Headline title="技術と経験" color="text-akane" />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="text-center p-4 bg-washi-50 rounded-lg shadow-sm">
-            <div className="text-akane text-2xl mb-2">Next.js</div>
-            <p className="text-sm">パフォーマンスとSEO対策</p>
-          </div>
-          <div className="text-center p-4 bg-washi-50 rounded-lg shadow-sm">
-            <div className="text-akane text-2xl mb-2 overflow-scroll">TypeScript</div>
-            <p className="text-sm">型安全な開発</p>
-          </div>
-          <div className="text-center p-4 bg-washi-50 rounded-lg shadow-sm">
-            <div className="text-akane text-2xl mb-2">Hono</div>
-            <p className="text-sm">モダンなAPI開発</p>
-          </div>
-          <div className="text-center p-4 bg-washi-50 rounded-lg shadow-sm">
-            <div className="text-akane text-2xl mb-2">UI/UX</div>
-            <p className="text-sm">ユーザー中心設計</p>
-          </div>
+          {displaySkills.map((skill, index) => (
+            <div key={index} className="text-center p-4 bg-washi-50 rounded-lg shadow-sm">
+              <div className="text-akane text-2xl mb-2 overflow-scroll">{skill.title}</div>
+              <p className="text-sm">{skill.description}</p>
+            </div>
+          ))}
           <Link href={"/skills"}>
             <p className=" hover:text-asagi">and more...</p>
           </Link>
