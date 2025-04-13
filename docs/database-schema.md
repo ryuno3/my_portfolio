@@ -44,6 +44,18 @@
   | `created_at` | TIMESTAMP    | Yes  | 作成日時                    |
   | `updated_at` | TIMESTAMP    | Yes  | 更新日時                    |
 
+### 4. `skills` (技術)
+
+- **用途**: 習得済み技術
+- **カラム構造**:
+
+  | カラム名      | 型           | 必須 | 説明                 |
+  | ------------- | ------------ | ---- | -------------------- |
+  | `id`          | UUID         | Yes  | ユーザーの一意識別子 |
+  | `title`       | VARCHAR(255) | Yes  | 技術名               |
+  | `description` | VARCHAR(255) | No   | 簡易的な説明         |
+  | `created_at`  | TIMESTAMP    | Yes  | 作成日時             |
+
 ## Notes
 
 - **UUID**: 各テーブルの主キーとして UUID を使用し、一意性を保証します。
