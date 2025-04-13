@@ -2,14 +2,10 @@ import Headline from "@/components/ui/headline";
 import { sawarabiMincho } from "./layout";
 import Link from "next/link";
 import Image from "next/image";
-import { SkillsAction } from "@/utils/prisma/skillsAction";
+import { Suspense } from "react";
+import SkillsSection from "@/components/section/skills/skills-section";
 
 export default async function Home() {
-  const skillsAction = new SkillsAction();
-
-  // 表示用に最大4つのスキルを選択
-  const displaySkills = await (await skillsAction.getAllSkills()).slice(0, 4);
-
   return (
     <div className="space-y-16">
       {/* ヒーローセクション */}
@@ -62,20 +58,18 @@ export default async function Home() {
       </section>
 
       {/* スキルセクション */}
-      <section className="washi-container">
-        <Headline title="技術と経験" color="text-akane" />
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {displaySkills.map((skill, index) => (
-            <div key={index} className="text-center p-4 bg-washi-50 rounded-lg shadow-sm">
-              <div className="text-akane text-2xl mb-2 overflow-scroll">{skill.title}</div>
-              <p className="text-sm">{skill.description}</p>
+      <Suspense
+        fallback={
+          <section className="washi-container">
+            <Headline title="技術と経験" color="text-akane" />
+            <div className="h-40 flex items-center justify-center">
+              <div className="animate-pulse text-kusagi">読み込み中...</div>
             </div>
-          ))}
-          <Link href={"/skills"}>
-            <p className=" hover:text-asagi">and more...</p>
-          </Link>
-        </div>
-      </section>
+          </section>
+        }
+      >
+        <SkillsSection />
+      </Suspense>
 
       {/* コンタクトセクション */}
       <section className="washi-container">
