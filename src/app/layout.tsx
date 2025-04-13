@@ -26,9 +26,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" className="light">
       <body
-        className={`${notoSerifJP.variable} ${sawarabiMincho.variable} antialiased bg-washi-50`}
+        className={`${notoSerifJP.variable} ${sawarabiMincho.variable} antialiased bg-washi-50 text-sumi`}
       >
         <div className="min-h-screen flex flex-col">
           <Header />

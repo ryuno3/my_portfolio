@@ -61,7 +61,7 @@ export default async function Home() {
       <Suspense
         fallback={
           <section className="washi-container">
-            <Headline title="技術と経験" color="text-akane" />
+            <Headline title="使用技術" color="text-akane" />
             <div className="h-40 flex items-center justify-center">
               <div className="animate-pulse text-kusagi">読み込み中...</div>
             </div>
