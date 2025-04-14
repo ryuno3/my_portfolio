@@ -1,5 +1,5 @@
 import { SkillCard } from "@/components/ui/skill-card";
-import { SkillsAction } from "@/utils/prisma/skillsAction";
+import { SkillsAction } from "@/utils/prisma/actions/skillsAction";
 
 export default async function SkillsList() {
   const skillsAction = new SkillsAction();

@@ -1,6 +1,6 @@
 import Headline from "@/components/ui/headline";
 import { SkillCard } from "@/components/ui/skill-card";
-import { SkillsAction } from "@/utils/prisma/skillsAction";
+import { SkillsAction } from "@/utils/prisma/actions/skillsAction";
 import Link from "next/link";
 
 export default async function SkillsSection() {
