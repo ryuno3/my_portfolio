@@ -1,5 +1,5 @@
 import React from "react";
-import { auth } from "@/auth";
+import { auth } from "@/lib/auth/auth";
 import { redirect } from "next/navigation";
 import DashboardHeader from "@/components/pages/dashboard/DashboardHeader";
 import DashboardTabs from "@/components/pages/dashboard/DashboardTabs";
