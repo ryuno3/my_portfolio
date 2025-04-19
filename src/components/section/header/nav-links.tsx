@@ -6,7 +6,7 @@ export const navItems = [
   { name: "スキル", href: "/skills" },
   { name: "プロジェクト", href: "/projects" },
   { name: "経歴", href: "/about" },
-  { name: "お問い合わせ", href: "/contact/form" },
+  { name: "お問い合わせ", href: "/contact" },
 ];
 
 export default function NavLinks() {
