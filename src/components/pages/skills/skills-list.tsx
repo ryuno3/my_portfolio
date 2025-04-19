@@ -1,9 +1,8 @@
 import { SkillCard } from "@/components/ui/skill-card";
-import { SkillsAction } from "@/utils/prisma/actions/skillsAction";
+import { getAllSkills } from "@/lib/api/skills";
 
 export default async function SkillsList() {
-  const skillsAction = new SkillsAction();
-  const skills = await skillsAction.getAllSkills();
+  const skills = await getAllSkills();
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

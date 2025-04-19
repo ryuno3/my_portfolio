@@ -1,12 +1,13 @@
 import Headline from "@/components/ui/headline";
 import { SkillCard } from "@/components/ui/skill-card";
-import { SkillsAction } from "@/utils/prisma/actions/skillsAction";
+import { getAllSkills } from "@/lib/api/skills";
 import Link from "next/link";
 
 export default async function SkillsSection() {
-  const skillsAction = new SkillsAction();
+  const skills = await getAllSkills();
+
   // 表示用に最大4つのスキルを選択
-  const displaySkills = (await skillsAction.getAllSkills()).slice(0, 4);
+  const displaySkills = skills.slice(0, 4);
 
   return (
     <section className="washi-container">

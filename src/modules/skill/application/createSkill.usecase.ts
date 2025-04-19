@@ -1,4 +1,5 @@
 import { SkillRepository } from "../domain/repositories/skillRepositry";
+import { CreateSkillDto } from "../dto/createSkillDto";
 
 export class CreateSkillUseCase {
   constructor(private readonly skillRepo: SkillRepository) {}
