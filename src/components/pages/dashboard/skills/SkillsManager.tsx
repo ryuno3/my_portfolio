@@ -1,11 +1,11 @@
-import { SkillsAction } from "@/utils/prisma/actions/skillsAction";
 import SkillsClient from "./SkillsClient";
 import { revalidatePath } from "next/cache";
+import { createSkill, deleteSkill, getAllSkills, updateSkill } from "@/lib/api/skills";
+import { UpdateSkillDto } from "@/modules/skill/dto/updateSkillDto";
 
 export default async function SkillsManager() {
   // スキルデータ取得
-  const skillsAction = new SkillsAction();
-  const skills = await skillsAction.getAllSkills();
+  const skills = await getAllSkills();
 
   // スキル追加のアクション
   async function addSkill(formData: FormData) {
@@ -13,8 +13,7 @@ export default async function SkillsManager() {
     const title = formData.get("title") as string;
     const description = formData.get("description") as string;
 
-    const skillsAction = new SkillsAction();
-    await skillsAction.createSkill({
+    await createSkill({
       title,
       description,
     });
@@ -23,25 +22,21 @@ export default async function SkillsManager() {
   }
 
   // スキル更新のアクション
-  async function updateSkill(id: string, formData: FormData) {
+  async function handleUpdateSkill(id: string, formData: FormData) {
     "use server";
-    const title = formData.get("title") as string;
-    const description = formData.get("description") as string;
+    const title = formData.get("title") as Partial<UpdateSkillDto["title"]>;
+    // descriptionはnullを許可するため、型アサーションを使用
+    const description = formData.get("description") as UpdateSkillDto["description"];
 
-    const skillsAction = new SkillsAction();
-    await skillsAction.updateSkill(id, {
-      title,
-      description,
-    });
+    await updateSkill(id, { title, description });
 
     revalidatePath("/dashboard");
   }
 
   // スキル削除のアクション
-  async function deleteSkill(id: string) {
+  async function handleDeleteSkill(id: string) {
     "use server";
-    const skillsAction = new SkillsAction();
-    await skillsAction.deleteSkill(id);
+    await deleteSkill(id);
 
     revalidatePath("/dashboard");
   }
@@ -50,8 +45,8 @@ export default async function SkillsManager() {
     <SkillsClient
       initialSkills={skills}
       onAddSkill={addSkill}
-      onUpdateSkill={updateSkill}
-      onDeleteSkill={deleteSkill}
+      onUpdateSkill={handleUpdateSkill}
+      onDeleteSkill={handleDeleteSkill}
     />
   );
 }
