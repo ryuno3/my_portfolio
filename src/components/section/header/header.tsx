@@ -1,7 +1,7 @@
 import Link from "next/link";
 import NavLinks from "./nav-links";
 import MobileNav from "./mobile-nav";
-import { sawarabiMincho } from "@/app/layout";
+import { sawarabiMincho } from "@/fonts/fonts";
 
 export default function Header() {
   return (

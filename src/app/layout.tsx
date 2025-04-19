@@ -1,19 +1,8 @@
 import type { Metadata } from "next";
-import { Noto_Serif_JP, Sawarabi_Mincho } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/section/footer/footer";
 import Header from "@/components/section/header/header";
-
-const notoSerifJP = Noto_Serif_JP({
-  variable: "--font-noto-serif-jp",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
-export const sawarabiMincho = Sawarabi_Mincho({
-  variable: "--font-sawarabi-mincho",
-  subsets: ["latin"],
-  weight: ["400"],
-});
+import { notoSerifJP, sawarabiMincho } from "@/fonts/fonts";
 
 export const metadata: Metadata = {
   title: "西野龍ノ介のポートフォリオ",

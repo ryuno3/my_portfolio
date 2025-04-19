@@ -1,5 +1,5 @@
 import Headline from "@/components/ui/headline";
-import { sawarabiMincho } from "./layout";
+import { sawarabiMincho } from "@/fonts/fonts";
 import Link from "next/link";
 import Image from "next/image";
 import { Suspense } from "react";

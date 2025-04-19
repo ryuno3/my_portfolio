@@ -3,7 +3,7 @@ import Headline from "@/components/ui/headline";
 import { SkillCardSkeleton } from "@/components/ui/skill-card";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
-import { sawarabiMincho } from "../layout";
+import { sawarabiMincho } from "@/fonts/fonts";
 import SkillsList from "@/components/pages/skills/skills-list";
 
 export const metadata = {

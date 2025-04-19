@@ -1,5 +1,5 @@
 import { CodeBracketSquareIcon } from "@heroicons/react/24/outline";
-import { sawarabiMincho } from "@/app/layout";
+import { sawarabiMincho } from "@/fonts/fonts";
 import { auth, signIn } from "@/lib/auth/auth";
 import { redirect } from "next/navigation";
 
