@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { PlusIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
-import SkillForm from "./SkillForm";
-import DeleteConfirmDialog from "@/components/ui/DeleteConfirmDialog";
+import SkillForm from "./skill-form";
+import DeleteConfirmDialog from "@/components/ui/delete-confirm-dialog";
 import { Skill } from "@/generated/prisma";
 
 interface SkillsClientProps {
