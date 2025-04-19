@@ -1,5 +1,5 @@
 import { Skill } from "@/generated/prisma";
-import { sawarabiMincho } from "@/app/layout";
+import { sawarabiMincho } from "@/fonts/fonts";
 
 // 通常のスキルカードのプロパティ
 interface SkillCardProps {

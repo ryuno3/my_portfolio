@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { sawarabiMincho } from "@/app/layout";
+import { sawarabiMincho } from "@/fonts/fonts";
 
 interface DashboardTabsProps {
   activeTab: string;
