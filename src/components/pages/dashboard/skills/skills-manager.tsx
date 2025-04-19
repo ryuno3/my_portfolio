@@ -1,4 +1,4 @@
-import SkillsClient from "./SkillsClient";
+import SkillsClient from "./skill-client";
 import { revalidatePath } from "next/cache";
 import { createSkill, deleteSkill, getAllSkills, updateSkill } from "@/lib/api/skills";
 import { UpdateSkillDto } from "@/modules/skill/dto/updateSkillDto";

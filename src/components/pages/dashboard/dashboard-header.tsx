@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { sawarabiMincho } from "@/app/layout";
-import LogoutButton from "@/components/ui/LogoutButton";
+import LogoutButton from "@/components/ui/logout-button";
 
 export default function DashboardHeader() {
   return (

@@ -1,10 +1,10 @@
 import React from "react";
 import { auth } from "@/lib/auth/auth";
 import { redirect } from "next/navigation";
-import DashboardHeader from "@/components/pages/dashboard/DashboardHeader";
-import DashboardTabs from "@/components/pages/dashboard/DashboardTabs";
-import SkillsManager from "@/components/pages/dashboard/skills/SkillsManager";
-import ProjectsManager from "@/components/pages/dashboard/projects/ProjectsManager";
+import DashboardHeader from "@/components/pages/dashboard/dashboard-header";
+import DashboardTabs from "@/components/pages/dashboard/dashboard-tabs";
+import SkillsManager from "@/components/pages/dashboard/skills/skills-manager";
+import ProjectsManager from "@/components/pages/dashboard/projects/projects-manager";
 
 interface DashboardPageProps {
   searchParams: Promise<{ tab?: string }>;
