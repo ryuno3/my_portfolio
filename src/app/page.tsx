@@ -79,7 +79,7 @@ export default async function Home() {
         </p>
         <div className="flex justify-center">
           <Link
-            href="/contact/form"
+            href="/contact"
             className="bg-kusagi text-washi-50 px-6 py-3 rounded-md hover:bg-opacity-90 transition duration-300"
           >
             お問い合わせ
