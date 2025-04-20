@@ -1,70 +1,44 @@
+"use server";
+
 import { Skill } from "@/generated/prisma";
+import { CreateSkillUseCase } from "@/modules/skill/application/createSkill.usecase";
+import { DeleteSkillUseCase } from "@/modules/skill/application/deleteSkill.usecase";
+import { GetAllSkillsUseCase } from "@/modules/skill/application/getAllSkills.usecase";
+import { UpdateSkillUseCase } from "@/modules/skill/application/updateSkill.usecase";
 import { CreateSkillDto } from "@/modules/skill/dto/createSkillDto";
+import { PrismaSkillRepository } from "@/modules/skill/infrastructure/repositories/skillPrismaRepository";
 
 export async function getAllSkills(): Promise<Skill[]> {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/skill`,
-    {
-      next: { revalidate: 60 },
-    }
-  );
+  const useCase = new GetAllSkillsUseCase(new PrismaSkillRepository());
+  const skills = await useCase.execute();
 
-  if (!res.ok) {
-    throw new Error("Skillの取得に失敗しました");
-  }
-
-  return res.json();
+  return skills;
 }
 
 export async function createSkill(data: CreateSkillDto): Promise<Skill> {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/skill`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }
-  );
+  const { title, description } = data;
+  const useCase = new CreateSkillUseCase(new PrismaSkillRepository());
 
-  if (!res.ok) {
-    throw new Error("Skillの作成に失敗しました");
-  }
+  const skill = await useCase.execute({
+    title,
+    description,
+  });
 
-  return res.json();
+  return skill;
 }
 
 export async function updateSkill(id: string, data: Partial<CreateSkillDto>): Promise<Skill> {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/skill`,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id, ...data }),
-    }
-  );
-  if (!res.ok) {
-    throw new Error("Skillの更新に失敗しました");
-  }
-  return res.json();
+  const { title, description } = data;
+  const useCase = new UpdateSkillUseCase(new PrismaSkillRepository());
+
+  const skill = await useCase.execute(id, { title, description });
+
+  return skill;
 }
 
 export async function deleteSkill(id: string): Promise<void> {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/skill`,
-    {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id }),
-    }
-  );
+  const useCase = new DeleteSkillUseCase(new PrismaSkillRepository());
+  await useCase.execute(id);
 
-  if (!res.ok) {
-    throw new Error("Skillの削除に失敗しました");
-  }
+  return;
 }

@@ -12,8 +12,8 @@ export class DeleteSkillUseCase {
     try {
       await this.skillRepo.delete(id);
     } catch (error) {
-      console.error("スキル取得エラー:", error);
-      throw new Error("スキルの取得に失敗しました");
+      console.error("スキル削除エラー:", error);
+      throw new Error("スキルの削除に失敗しました");
     }
   }
 }
