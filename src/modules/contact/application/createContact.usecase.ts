@@ -6,7 +6,7 @@ export class CreateContactUseCase {
 
   async execute(dto: CreateContactDto) {
     try {
-      const contact = await this.contactRepository.create(dto);
+      const contact: CreateContactDto = await this.contactRepository.create(dto);
       return contact;
     } catch (error) {
       console.error("contact作成エラー:", error);

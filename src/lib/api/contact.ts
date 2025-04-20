@@ -1,29 +1,24 @@
+"use server";
+
+import { CreateContactUseCase } from "@/modules/contact/application/createContact.usecase";
+import { CreateContactDto } from "@/modules/contact/dto/createContactDto";
 import { CreateContactResponseDto } from "@/modules/contact/dto/createContactResponseDto";
+import { PrismaContactRepository } from "@/modules/contact/infrastructure/repositories/contactPrismaRepository";
 
 export async function submitContactAction(
   prevState: CreateContactResponseDto,
   formdata: FormData
 ): Promise<CreateContactResponseDto> {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/contact`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: formdata.get("name"),
-        email: formdata.get("email"),
-        message: formdata.get("message"),
-      }),
-    }
-  );
-  if (!res.ok) {
-    throw new Error("お問い合わせの送信に失敗しました");
-  }
-  const data: CreateContactResponseDto = await res.json();
+  const name = formdata.get("name") as CreateContactDto["name"];
+  const email = formdata.get("email") as CreateContactDto["email"];
+  const message = formdata.get("message") as CreateContactDto["message"];
+  const dto: CreateContactDto = { name, email, message };
+
+  const useCase = new CreateContactUseCase(new PrismaContactRepository());
+  const res = await useCase.execute(dto);
+
   return {
-    ...data,
+    ...res,
     status: "success",
     errors: undefined,
     isSubmitting: false,
