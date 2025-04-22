@@ -3,8 +3,6 @@ import { SkillCard } from "@/components/ui/skill-card";
 import { getAllSkills } from "@/lib/api/skills";
 import Link from "next/link";
 
-export const revalidate = 60; // 1分ごとに再検証
-
 export default async function SkillsSection() {
   const skills = await getAllSkills();
 

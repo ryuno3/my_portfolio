@@ -10,6 +10,9 @@ export const metadata = {
   title: "技術と経験 | 西野 龍ノ介のポートフォリオ",
   description: "西野 龍ノ介のスキルと技術経験の一覧",
 };
+export const revalidate = 3600;
+
+export const experimental_ppr = true
 
 // スキルのローディング状態
 function SkillsLoadingState() {
