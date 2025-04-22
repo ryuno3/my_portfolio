@@ -12,6 +12,8 @@ export const metadata = {
 };
 export const revalidate = 3600;
 
+export const experimental_ppr = true
+
 // スキルのローディング状態
 function SkillsLoadingState() {
   return (
