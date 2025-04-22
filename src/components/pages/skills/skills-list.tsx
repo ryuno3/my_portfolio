@@ -1,8 +1,6 @@
 import { SkillCard } from "@/components/ui/skill-card";
 import { getAllSkills } from "@/lib/api/skills";
 
-export const dynamic = "force-dynamic"; // 常に最新のデータを取得
-
 export default async function SkillsList() {
   const skills = await getAllSkills();
 
