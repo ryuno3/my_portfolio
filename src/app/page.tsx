@@ -5,6 +5,10 @@ import Image from "next/image";
 import { Suspense } from "react";
 import SkillsSection from "@/components/section/skills/skills-section";
 
+export const experimental_ppr = true;
+
+export const revalidate = 3600;
+
 export default async function Home() {
   return (
     <div className="space-y-16">
