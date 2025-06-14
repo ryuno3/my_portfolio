@@ -24,7 +24,7 @@ export class CreateContactUseCase {
 
       const data: CreateContactResponseDto = await res.json();
 
-      if (!data.status) {
+      if (data.status !== "success") {
         throw new Error("Gmail送信に失敗しました");
       }
 
