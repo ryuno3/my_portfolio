@@ -12,7 +12,7 @@ const initialState: CreateContactResponseDto = {
   id: "",
   name: "",
   email: "",
-  message: "",
+  content: "",
   createdAt: new Date(),
   status: "noData",
   errors: undefined,
@@ -55,7 +55,7 @@ export default function ContactForm() {
             placeholder="お問い合わせ内容をご記入ください"
             rows={5}
             required
-            error={state.errors?.message}
+            error={state.errors?.content}
           />
 
           {state.errors?.form && (
