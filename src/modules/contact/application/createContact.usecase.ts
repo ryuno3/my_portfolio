@@ -12,6 +12,9 @@ export class CreateContactUseCase {
       // gmail送信処理
       const res = await fetch(process.env.NEXT_PUBLIC_GMAIL_API_URL as string, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           type: "contact",
           params: {
